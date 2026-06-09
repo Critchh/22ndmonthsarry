@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 22nd Monthsary</title>
+
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+    <!-- Envelope Intro -->
+    <div class="envelope-screen" id="envelopeScreen">
+        <div class="envelope" id="envelope">
+            <div class="flap"></div>
+            <div class="pocket"></div>
+
+            <div class="letter-preview">
+                <br>
+                Open Me
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Letter -->
+    <div class="paper hidden" id="letter">
+
+        <h1>To the girl of my dreams,</h1>
+
+        <p>
+            Good afternoon to you my love, I hope you slept good today;
+            <a href="Flames.html">I can’t wait to see your face</a>
+            in person again, to hold you and kiss your soft skin, to bask in the
+            essence of your warmth and to enjoy being in your presence once again;
+            I miss everything, from your smell, to our
+            <a href="Coffee.html">coffees in the morning</a>,
+            afternoon, and even at night, to our never-ending food runs, our small
+            dates, our walking Hera time, our infinite quest to find something new
+            to watch or do, it will always be etched in my soul how happy those
+            times when I’m with you are.
+        </p>
+
+        <p>
+            <a href="BabyPowder.html">You’re everything I’d ever want</a>,
+            my darling; My partner in life and in crime, in sadness and in
+            happiness, in excitement and in boredom, you are the only one I want,
+            <a href="PrettyBoy.html">even if my heart stops beating</a>.
+
+            I know we have been going through some rough patches, most definitely
+            because of my doing as well, I just want you to know that I love you
+            so much and
+            <a href="Seasons.html">if I could be by your side</a>
+            at every given second, minute, hour, days, weeks, and years, I will
+            take it even if it costs me my all, even if it costs me my past, my
+            future, and my present, I will take it.
+
+            There is absolutely nothing that can amount to my love for you and I
+            want you to know that, and feel that,
+            <a href="Sweet.html">it’s so sweet, knowing that you love me</a>,
+            to have such a wonderful woman in my arms and in my heart, someone
+            that is willing to give her all and more for me.
+
+            I thank you, I promise that
+            <a href="Luther.html">if this world was mine,</a>
+            I would also conquer other planets for you and it will still be a tad
+            bit too short to amount to my love for you.
+        </p>
+
+        <p>
+            I wish to hear
+            <a href="Sextape.html">the sound of the waves collide</a>
+            with you by my side once again. I know we share the same love for the
+            ocean and I feel that in a way it connects us; our love is as vast as
+            it is and our bond to be as deep as it is and no one would ever know
+            this but us.
+
+            I wish to look you at this moment in your eyes with
+            <a href="Buzz.html">the thickest tension</a>
+            mankind has ever seen, to melt you with my gaze and to lay with you
+            without space.
+        </p>
+
+        <p>
+            A most wonderful 22nd to us my love, I hope that we can do the most
+            in our day. I will be taking my day offs for Thursday and Friday and
+            I might call in for Wednesday to spend more time with you on our
+            Monthsary.
+
+            Just know that I always got your back, you will always have me, now
+            and forever,
+            <a href="DieWithASmile.html">
+                wherever you go that’s where I’ll follow
+            </a>.
+        </p>
+
+        <br><br>
+
+        <p>
+            From a thousand miles away, yet closest in my heart,
+            <br><br>
+            <strong>Ian</strong>
+        </p>
+
+        <div class="love-clock">
+            Together for <span id="timeTogether"></span>
+        </div>
+
+    </div>
+
+    <script>
+        const envelope = document.getElementById("envelope");
+        const envelopeScreen = document.getElementById("envelopeScreen");
+        const letter = document.getElementById("letter");
+
+        if (sessionStorage.getItem("letterOpened") === "true") {
+            envelopeScreen.classList.add("hide");
+            letter.classList.remove("hidden");
+            letter.classList.add("show");
+        }
+
+        envelope.addEventListener("click", () => {
+            envelope.classList.add("open");
+
+            setTimeout(() => {
+                envelopeScreen.classList.add("hide");
+
+                letter.classList.remove("hidden");
+                letter.classList.add("show");
+
+                sessionStorage.setItem("letterOpened", "true");
+            }, 1000);
+        });
+
+        const startDate = new Date("2024-08-10T00:00:00");
+
+        function updateLoveClock() {
+            const now = new Date();
+
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+
+            if (days < 0) {
+                months--;
+                const previousMonth = new Date(
+                    now.getFullYear(),
+                    now.getMonth(),
+                    0
+                );
+                days += previousMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            document.getElementById("timeTogether").textContent =
+                `${years} year${years !== 1 ? "s" : ""}, ` +
+                `${months} month${months !== 1 ? "s" : ""}, and ` +
+                `${days} day${days !== 1 ? "s" : ""}`;
+        }
+
+        updateLoveClock();
+        setInterval(updateLoveClock, 1000);
+    </script>
+
+</body>
+</html>
